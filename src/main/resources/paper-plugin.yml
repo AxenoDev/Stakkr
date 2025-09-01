@@ -1,0 +1,9 @@
+name: Stakkr
+version: '1.0.0'
+main: fr.libnaus.stakkr.Stakkr
+api-version: '1.21'
+prefix: Stakkr
+load: STARTUP
+authors: [ Libnaus Studio ]
+description: A lightweight Minecraft plugin that displays dropped item info and stacks mobs to reduce lag.
+website: https://libnaus.fr
