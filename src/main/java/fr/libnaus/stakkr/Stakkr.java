@@ -1,17 +1,44 @@
 package fr.libnaus.stakkr;
 
+import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.slf4j.Logger;
 
-public final class Stakkr extends JavaPlugin {
+public final class Stakkr extends JavaPlugin
+{
+
+    @Getter
+    public static Stakkr instance;
 
     @Override
-    public void onEnable() {
-        // Plugin startup logic
-
+    public void onEnable()
+    {
+        instance = this;
+        this.logLoadMessage();
     }
 
     @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+    public void onDisable()
+    {
+        this.getSLF4JLogger().info("Stakkr Disabled");
+    }
+
+    private void logLoadMessage()
+    {
+        Logger logger = this.getSLF4JLogger();
+
+        String pluginVersion = this.getPluginMeta().getVersion();
+        String javaVersion = System.getProperty("java.version");
+        String server = String.format("%s %s", Bukkit.getName(), Bukkit.getVersion());
+
+        logger.info("\u001B[1;35m                                                    \u001B[0m");
+        logger.info("\u001B[1;35m   _____ _______       _  ___  _______              \u001B[0m");
+        logger.info("\u001B[1;35m  / ____|__   __|/\\   | |/ / |/ /  __ \\         \u001B[0;90mStakkr {}\u001B[0m", pluginVersion);
+        logger.info("\u001B[1;35m | (___    | |  /  \\  | ' /| ' /| |__) |        \u001B[0;90mJava {}\u001B[0m", javaVersion);
+        logger.info("\u001B[1;35m  \\___ \\   | | / /\\ \\ |  < |  < |  _  /         \u001B[0;90mServer: {}\u001B[0m", server);
+        logger.info("\u001B[1;35m  ____) |  | |/ ____ \\| . \\| . \\| | \\ \\        \u001B[0m");
+        logger.info("\u001B[1;35m |_____/   |_/_/    \\_\\_|\\_\\_|\\_\\_|  \\_\\    \u001B[0m");
+        logger.info("\u001B[1;35m                                                    \u001B[0m");
     }
 }
