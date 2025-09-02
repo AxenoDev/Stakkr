@@ -32,13 +32,11 @@ public final class Stakkr extends JavaPlugin
         String javaVersion = System.getProperty("java.version");
         String server = String.format("%s %s", Bukkit.getName(), Bukkit.getVersion());
 
-        logger.info("\u001B[1;35m                                                    \u001B[0m");
-        logger.info("\u001B[1;35m   _____ _______       _  ___  _______              \u001B[0m");
-        logger.info("\u001B[1;35m  / ____|__   __|/\\   | |/ / |/ /  __ \\         \u001B[0;90mStakkr {}\u001B[0m", pluginVersion);
-        logger.info("\u001B[1;35m | (___    | |  /  \\  | ' /| ' /| |__) |        \u001B[0;90mJava {}\u001B[0m", javaVersion);
-        logger.info("\u001B[1;35m  \\___ \\   | | / /\\ \\ |  < |  < |  _  /         \u001B[0;90mServer: {}\u001B[0m", server);
-        logger.info("\u001B[1;35m  ____) |  | |/ ____ \\| . \\| . \\| | \\ \\        \u001B[0m");
-        logger.info("\u001B[1;35m |_____/   |_/_/    \\_\\_|\\_\\_|\\_\\_|  \\_\\    \u001B[0m");
-        logger.info("\u001B[1;35m                                                    \u001B[0m");
+        logger.info("\u001B[1;34m                                                    \u001B[0m");
+        logger.info("\u001B[1;34m  ___ _____ _   _  ___  _____        \u001B[0;90mStakkr {}\u001B[0m", pluginVersion);
+        logger.info("\u001B[1;34m / __|_   _/_\\ | |/ / |/ / _ \\       \u001B[0;90mJava {}\u001B[0m", javaVersion);
+        logger.info("\u001B[1;34m \\__ \\ | |/ _ \\| ' <| ' <|   /       \u001B[0;90mServer: {}\u001B[0m", server);
+        logger.info("\u001B[1;34m |___/ |_/_/ \\_\\_|\\_\\_|\\_\\_|_\\       \u001B[0m");
+        logger.info("\u001B[1;34m                                                    \u001B[0m");
     }
 }
