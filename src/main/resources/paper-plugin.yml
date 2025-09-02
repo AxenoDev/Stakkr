@@ -1,7 +1,7 @@
 name: Stakkr
-version: '1.0.0'
+version: ${version}
 main: fr.libnaus.stakkr.Stakkr
-api-version: '1.21'
+api-version: ${minecraft_version}
 prefix: Stakkr
 load: STARTUP
 authors: [ Libnaus Studio ]
