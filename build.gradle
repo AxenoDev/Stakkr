@@ -1,10 +1,25 @@
 plugins {
     id 'java'
     id("xyz.jpenilla.run-paper") version "2.3.1"
+    id("com.gradleup.shadow") version "9.1.0"
 }
 
+def getLatestGitTag() {
+    try {
+        providers.exec {
+            commandLine("git", "describe", "--tags", "--abbrev=0")
+        }.standardOutput.asText.get().trim()
+    } catch (Exception ignore) {
+        "unknown"
+    }
+}
+
+def tag = System.getenv("TAG") ?: getLatestGitTag()
+def isSnapshot = System.getenv('SNAPSHOT')?.toBoolean() ?: false
+def gitHash = System.getenv("GIT_HASH") ?: "local"
+
 group = 'fr.libnaus'
-version = '1.0.0'
+version = isSnapshot ? "${tag}-${gitHash.take(7)}" : (System.getenv("TAG") ? tag : "$tag-local")
 
 repositories {
     mavenCentral()
@@ -15,7 +30,13 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:${minecraft_version}-R0.1-SNAPSHOT")
+
+    implementation("io.github.revxrsal:lamp.common:${revxrsal_lamp_version}")
+    implementation("io.github.revxrsal:lamp.paper:${revxrsal_paper_version}")
+
+    compileOnly("org.projectlombok:lombok:${lombok_version}")
+    annotationProcessor("org.projectlombok:lombok:${lombok_version}")
 }
 
 tasks {
@@ -23,7 +44,7 @@ tasks {
         // Configure the Minecraft version for our task.
         // This is the only required configuration besides applying the plugin.
         // Your plugin's jar (or shadowJar if present) will be used automatically.
-        minecraftVersion("1.21")
+        minecraftVersion("${minecraft_version}")
     }
 }
 
@@ -46,7 +67,7 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 processResources {
-    def props = [version: version]
+    def props = [version: version, minecraft_version: minecraft_version]
     inputs.properties props
     filteringCharset 'UTF-8'
     filesMatching('paper-plugin.yml') {
