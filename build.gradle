@@ -18,7 +18,7 @@ def tag = System.getenv("TAG") ?: getLatestGitTag()
 def isSnapshot = System.getenv('SNAPSHOT')?.toBoolean() ?: false
 def gitHash = System.getenv("GIT_HASH") ?: "local"
 
-group = 'fr.libnaus'
+group = 'fr.libnaus.hommr'
 version = isSnapshot ? "${tag}-${gitHash.take(7)}" : (System.getenv("TAG") ? tag : "$tag-local")
 
 repositories {
@@ -33,7 +33,8 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:${minecraft_version}-R0.1-SNAPSHOT")
 
     implementation("io.github.revxrsal:lamp.common:${revxrsal_lamp_version}")
-    implementation("io.github.revxrsal:lamp.paper:${revxrsal_paper_version}")
+    implementation("io.github.revxrsal:lamp.brigadier:${revxrsal_lamp_version}")
+    implementation("io.github.revxrsal:lamp.bukkit:${revxrsal_lamp_version}")
 
     compileOnly("org.projectlombok:lombok:${lombok_version}")
     annotationProcessor("org.projectlombok:lombok:${lombok_version}")

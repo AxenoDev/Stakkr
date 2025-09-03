@@ -1,15 +1,17 @@
-package fr.libnaus.stakkr;
+package fr.libnaus.hommr;
 
+import fr.libnaus.hommr.listener.ItemStackListener;
+import fr.libnaus.hommr.manager.ItemStackManager;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.slf4j.Logger;
 
-public final class Stakkr extends JavaPlugin
+public final class Hommr extends JavaPlugin
 {
 
     @Getter
-    public static Stakkr instance;
+    public static Hommr instance;
 
     @Override
     public void onEnable()
@@ -21,7 +23,7 @@ public final class Stakkr extends JavaPlugin
     @Override
     public void onDisable()
     {
-        this.getSLF4JLogger().info("Stakkr Disabled");
+        this.getSLF4JLogger().info("Hommr Disabled");
     }
 
     private void logLoadMessage()

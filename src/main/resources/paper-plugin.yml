@@ -1,9 +1,9 @@
-name: Stakkr
+name: Hommr
 version: ${version}
-main: fr.libnaus.stakkr.Stakkr
+main: fr.libnaus.hommr.Hommr
 api-version: ${minecraft_version}
-prefix: Stakkr
+prefix: Hommr
 load: STARTUP
 authors: [ Libnaus Studio ]
-description: A lightweight Minecraft plugin that displays dropped item info and stacks mobs to reduce lag.
-website: https://libnaus.fr
+description: Easily set, teleport, and manage your homes.
+website: https://libnaus.fr/
